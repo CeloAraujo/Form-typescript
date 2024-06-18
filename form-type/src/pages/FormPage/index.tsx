@@ -1,4 +1,3 @@
-import React from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { FiSend } from "react-icons/fi";
 
@@ -36,11 +35,12 @@ const FormPage = () => {
 
   const formComponents = [
     <UserForm data={data} updateFieldHandler={updateFieldHandler} />,
-    <ReviewForm />,
-    <Thanks />,
+    <ReviewForm data={data} updateFieldHandler={updateFieldHandler} />,
+    <Thanks data={data}/>,
   ];
 
-  const { currentStep, currentComponent, changeStep } = useForm(formComponents);
+  const { currentStep, currentComponent, changeStep, isLastStep } =
+    useForm(formComponents);
   return (
     <div className="app">
       <div className="header">
@@ -59,10 +59,17 @@ const FormPage = () => {
               <GrFormPrevious />
               <span>Voltar</span>
             </button>
-            <button type="submit">
-              <span>Avançar</span>
-              <GrFormNext />
-            </button>
+            {!isLastStep ? (
+              <button type="submit">
+                <span>Avançar</span>
+                <GrFormNext />
+              </button>
+            ) : (
+              <button type="button">
+                <span>Avançar</span>
+                <FiSend />
+              </button>
+            )}
           </div>
         </form>
       </div>

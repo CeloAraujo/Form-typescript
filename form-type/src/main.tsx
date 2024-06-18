@@ -7,11 +7,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: "/Form-multistep/",
+    path: "/",
     element: <App />,
     children: [
       {
-        path: "/Form-multistep",
+        path: "/",
         element: <FormPage />,
       },
     ],
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 
 const rootElement = document.getElementById("root")
 
-// Check if the root element exists and is an HTMLElement
+// Checa se a root element existe e é um HTMLElement 
 if (!(rootElement instanceof HTMLElement)) {
   throw new Error("No root element found");
 }
